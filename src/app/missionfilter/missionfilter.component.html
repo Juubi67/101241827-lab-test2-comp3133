@@ -1,0 +1,99 @@
+<main
+  class="flex items-start justify-center gap-10 p-10 w-full max-w-screen-xl mx-auto"
+>
+  <aside
+    class="sticky top-10 z-[9999999] p-5 w-full max-w-64 border rounded-xl"
+  >
+    <h3 class="mb-5 text-xl font-medium text-gray-800">Filter</h3>
+
+    <div class="space-y-5 w-full">
+      <div>
+        <label
+          for="launchSuccess"
+          class="mb-2 block text-sm font-medium text-gray-800"
+          >Launch Year</label
+        >
+        <select
+          class="px-3 w-full py-2 rounded-xl border"
+          id="selectedYear"
+          [(ngModel)]="selectedYear"
+          (change)="filterByYear(selectedYear)"
+        >
+          <option value="">All</option>
+          <option *ngFor="let year of years" value="{{ year }}">
+            {{ year }}
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label
+          for="launchSuccess"
+          class="mb-2 block text-sm font-medium text-gray-800"
+          >Launch Success</label
+        >
+        <select
+          class="px-3 w-full py-2 rounded-xl border"
+          id="launchSuccess"
+          [(ngModel)]="launchSuccess"
+          (change)="filterByLaunchSuccess(launchSuccess)"
+        >
+          <option value="">All</option>
+          <option value="true">Successful</option>
+          <option value="false">Failed</option>
+        </select>
+      </div>
+
+      <div>
+        <label
+          for="landSuccess"
+          class="mb-2 block text-sm font-medium text-gray-800"
+          >Land Success:</label
+        >
+        <select
+          id="landSuccess"
+          class="px-3 w-full py-2 rounded-xl border"
+          [(ngModel)]="landSuccess"
+          (change)="filterByLandSuccess(landSuccess)"
+        >
+          <option value="">All</option>
+          <option value="true">Successful</option>
+          <option value="false">Failed</option>
+        </select>
+      </div>
+    </div>
+  </aside>
+
+  <ul class="grid grid-cols-4 w-full items-start justify-start gap-5">
+    <li
+      (click)="onSelectMission(launch.flight_number)"
+      class="w-full p-3 rounded-xl border shadow-md hover:bg-gray-100 cursor-pointer"
+      *ngFor="let launch of filteredLaunches"
+    >
+      <img
+        src="{{ launch.links.mission_patch_small }}"
+        alt="launch logo"
+        class="w-full overflow-hidden border p-2 rounded-xl object-cover"
+      />
+      <h3 class="mt-3 text-base font-medium text-gray-800">
+        {{ launch.mission_name }}
+      </h3>
+
+      <div class="mt-5 w-full grid grid-cols-2 gap-y-1">
+        <h4 class="text-xs font-medium text-gray-800">Mission Ids</h4>
+        <p class="text-xs text-gray-600">{{ launch.mission_id }}</p>
+
+        <h4 class="text-xs font-medium text-gray-800">Launch Year</h4>
+        <p class="text-xs text-gray-600">{{ launch.launch_year | date }}</p>
+
+        <h4 class="text-xs font-medium text-gray-800">Succesful Launch</h4>
+        <p class="text-xs text-gray-600">{{ launch.launch_success }}</p>
+
+        <h4 class="text-xs font-medium text-gray-800">Succesful Landing</h4>
+        <p class="text-xs text-gray-600">
+          {{ launch.rocket.first_stage.cores[0].land_success || false }}
+        </p>
+      </div>
+    </li>
+  </ul>
+</main>
