@@ -1,11 +1,11 @@
 <main
-  class="min-h-[100dvh] w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center"
+  class="min-h-[100dvh] w-full max-w-screen-md mx-auto flex flex-col items-center justify-center"
 >
   <h2 class="mb-10 text-2xl font-medium text-gray-800">
     Space X Mission Details
   </h2>
 
-  <div *ngIf="missionDetails" class="border p-5 rounded-xl">
+  <div *ngIf="missionDetails" class="w-full border p-5 rounded-xl">
     <div class="w-full flex items-start justify-start gap-3">
       <img
         src="{{ missionDetails.links.mission_patch_small }}"
@@ -16,6 +16,7 @@
         <h2 class="text-2xl font-medium text-gray-800 whitespace-nowrap">
           Mission - {{ missionDetails.mission_name }}
         </h2>
+
         <p class="text-sm text-gray-800">
           Flight Number: {{ missionDetails.flight_number }}
         </p>
