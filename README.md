@@ -1,27 +1,71 @@
-# 101241827LabTest2Comp3133
+# Angular Space Missions App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+This is a simple Angular application that displays information about SpaceX missions. It allows users to view a list of missions and details of each mission.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To get started with the application, follow these steps:
 
-## Code scaffolding
+1. Clone the repository to your local machine:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. Install dependencies:
 
-## Build
+3. Run the development server:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Navigate to `http://localhost:4200/` in your browser to view the application.
 
-## Running unit tests
+## Routes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Mission List
 
-## Running end-to-end tests
+- Path: `/`
+- Description: Displays a list of SpaceX missions.
+- Components:
+- MissionlistComponent
+- Features:
+- Displays mission name, flight number, launch date, and other details.
+- Allows users to click on a mission to view details.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Mission Filter List
 
-## Further help
+- Path: `/filter`
+- Description: Displays a list of SpaceX missions with filter.
+- Components:
+- MissionfilterComponent
+- Features:
+- Displays mission name, flight number, launch date, and other details.
+- Allows users to click on a mission to view details.
+- Allows users to filter.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Mission Details
+
+- Path: `/missiondetails/:flightNumber`
+- Description: Displays details of a specific SpaceX mission.
+- Components:
+- MissiondetailsComponent
+- Features:
+- Displays detailed information about the selected mission.
+- Shows mission name, flight number, launch date, rocket details, and more.
+
+## Services
+
+### DataFetcherService
+
+- Description: Service to fetch data from the SpaceX API.
+- Methods:
+- `fetchData()`: Fetches mission data from the API.
+
+## Components
+
+### MissionlistComponent
+
+- Description: Component to display a list of SpaceX missions.
+- Features:
+- Displays a list of missions with basic information.
+- Allows users to click on a mission to view details.
+
+### MissiondetailsComponent
+
+- Description: Component to display details of a specific SpaceX mission.
+- Features:
+- Displays detailed information about the selected mission.
